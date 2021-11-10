@@ -42,7 +42,7 @@ class TestImageDataset(BaseDataset):
     def get_paths(self, opt):
         img_names = os.listdir(opt.image_dir)
         img_postfix = img_names[0].split(".")[-1]
-        msk_names = [n.replace(img_postfix, "png") for n in img_names]
+        msk_names = img_names
         image_paths = [f"{opt.image_dir}/{n}" for n in img_names]
         output_paths = [f"{opt.output_dir}/{n}" for n in img_names]
         mask_paths = [f"{opt.mask_dir}/{n}" for n in msk_names]
