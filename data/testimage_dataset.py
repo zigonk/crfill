@@ -69,8 +69,6 @@ class TestImageDataset(BaseDataset):
 #         mask = mask.resize((w,h))
         mask_tensor = self.mask_transform(mask)
         mask_tensor = (mask_tensor>0).float()
-        print(image_tensor.shape)
-        print(mask_tensor.shape)
         input_dict = {
                       'image': image_tensor,
                       'mask': mask_tensor,
