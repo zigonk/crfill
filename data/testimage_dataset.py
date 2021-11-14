@@ -31,14 +31,14 @@ class TestImageDataset(BaseDataset):
         size = len(self.image_paths)
         self.dataset_size = size
         transform_list = [
-                transforms.ToTensor(), 
                 transforms.Resize(400),
+                transforms.ToTensor(), 
                 transforms.Normalize((0.5, 0.5, 0.5),(0.5, 0.5, 0.5))
                 ]
         self.image_transform = transforms.Compose(transform_list)
         self.mask_transform = transforms.Compose([
-            transforms.ToTensor(),
             transforms.Resize(400),
+            transforms.ToTensor(),
             ])
 
     def get_paths(self, opt):
@@ -66,7 +66,7 @@ class TestImageDataset(BaseDataset):
         mask_path = self.mask_paths[index]
         mask = Image.open(mask_path)
         mask = mask.convert("L")
-#         mask = mask.resize((w,h))
+        mask = mask.resize((w,h))
         mask_tensor = self.mask_transform(mask)
         mask_tensor = (mask_tensor>0).float()
         input_dict = {
