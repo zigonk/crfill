@@ -350,8 +350,7 @@ class BaseConvGenerator(BaseNetwork):
         bsize, ch, height, width = x.shape
         ones_x = torch.ones(bsize, 1, height, width).to(x.device)
         x = torch.cat([x, ones_x, ones_x*mask], 1)
-        print(x.shape)
-        print(mask.shape)
+
         # two stage network
         ## stage1
         x = self.conv1(x)
@@ -373,7 +372,7 @@ class BaseConvGenerator(BaseNetwork):
         x = self.conv17(x)
         x = torch.tanh(x)
         x_stage1 = x
-        print(x.shape)
+
         x = x*mask + xin[:, 0:3, :, :]*(1.-mask)
         xnow = x
 
