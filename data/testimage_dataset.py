@@ -37,6 +37,7 @@ class TestImageDataset(BaseDataset):
                 ]
         self.image_transform = transforms.Compose(transform_list)
         self.mask_transform = transforms.Compose([
+            transforms.Resize(400),
             transforms.ToTensor()
             ])
 
