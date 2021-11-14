@@ -31,6 +31,7 @@ class TestImageDataset(BaseDataset):
         size = len(self.image_paths)
         self.dataset_size = size
         transform_list = [
+                transforms.Resize(max_size = 800)
                 transforms.ToTensor(), 
                 transforms.Normalize((0.5, 0.5, 0.5),(0.5, 0.5, 0.5))
                 ]
