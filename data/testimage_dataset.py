@@ -66,7 +66,7 @@ class TestImageDataset(BaseDataset):
         mask_path = self.mask_paths[index]
         mask = Image.open(mask_path)
         mask = mask.convert("L")
-        mask = mask.resize((w,h))
+#         mask = mask.resize((w,h))
         mask_tensor = self.mask_transform(mask)
         mask_tensor = (mask_tensor>0).float()
         input_dict = {
